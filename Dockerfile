@@ -15,9 +15,9 @@ ENV APP_ROOT /sample_app
 WORKDIR $APP_ROOT
 
 # copy host gemfile
-ADD ./Gemfile $APP_ROOT/Gemfile
-ADD ./Gemfile.lock $APP_ROOT/Gemfile.lock
+ADD ./src/Gemfile $APP_ROOT/Gemfile
+ADD ./src/Gemfile.lock $APP_ROOT/Gemfile.lock
 
 # bundle install Gemfile
 RUN bundle install
-ADD . $APP_ROOT
+ADD ./src/ $APP_ROOT
