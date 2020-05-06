@@ -2,7 +2,7 @@
 
 ## プロジェクト作成
 ```shell
-$ docker-compose run web rails new . --force --database=mysql --skip-bundle
+$ docker-compose run web rails new . --force --database=mysql
 ```
 
 ## データベースの設定
@@ -26,7 +26,7 @@ default: &default
 ## Docker起動
 
 ```shell
-$ docker-compose up -d
+$ docker-compose up 
 ```
 
 ## データベース作成
