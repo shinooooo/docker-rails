@@ -1,5 +1,15 @@
 # 初回起動
 
+## mysqlのパスワードを設定
+```yaml
+# docker-compose.
+services:
+  db:
+    ⋮
+    environment:
+      MYSQL_ROOT_PASSWORD: **** #MySQLを起動する際パスワードを設定
+```
+
 ## プロジェクト作成
 ```shell
 $ docker-compose run web rails new . --force --database=mysql
@@ -18,12 +28,12 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password: password # docker-compose.ymlに記述したMYSQL_ROOT_PASSWORD
-  host: db # docker-compose.ymlに記述したservice
-```
+  username: <%= ENV.fetch("DB_USERNAME") { root } %>
+  password: <%= ENV.fetch("DB_PASSWORD") { password } %>
+  host: db
+  ```
 
-## Docker起動
+## コンテナ起動
 
 ```shell
 $ docker-compose up 
