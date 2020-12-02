@@ -8,14 +8,15 @@ RUN apt-get update -qq && \
                        nodejs
 
 # work dierectory
-RUN mkdir /sample_app
+RUN mkdir /app_name
 
 # assign work directory as APP_ROOT
-ENV APP_ROOT /sample_app
+ENV APP_ROOT /app_name
 WORKDIR $APP_ROOT
 
 # copy host gemfile
 ADD ./src/Gemfile $APP_ROOT/Gemfile
+ADD ./src/.gitignore $APP_ROOT/.gitignore
 ADD ./src/Gemfile.lock $APP_ROOT/Gemfile.lock
 
 # bundle install Gemfile
