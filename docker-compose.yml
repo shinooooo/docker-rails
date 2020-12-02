@@ -2,8 +2,8 @@ version: '3'
 services:
   db:
     image: mysql:5.7
-    volumes:
-      - ./src/db/mysql_data:/var/lib/mysql
+    # volumes:
+    #   - ./src/database/mysql_data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
     ports:
