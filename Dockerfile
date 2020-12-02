@@ -20,5 +20,4 @@ ADD ./templates/Gemfile.lock $APP_ROOT/Gemfile.lock
 
 # bundle install Gemfile
 RUN bundle install
-ADD ./templates/rails_gitignore $APP_ROOT/.gitignore
 ADD ./src/ $APP_ROOT
