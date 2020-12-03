@@ -6,8 +6,8 @@ RUN apt-get update -qq && \
                        nodejs
 
 WORKDIR /myapp
-COPY Gemfile /myapp/Gemfile
-COPY Gemfile.lock /myapp/Gemfile.lock
+COPY src/Gemfile /myapp/Gemfile
+COPY src/Gemfile.lock /myapp/Gemfile.lock
 RUN bundle install
 COPY ./src /myapp
 

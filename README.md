@@ -13,7 +13,7 @@ services:
 
 ### railsアプリの作成
 ```shell
-  docker-compose run web rails new . --force --database=mysql --skip-test
+  $ docker-compose run web rails new . --force --database=mysql --skip-test
 ```
 
 ### データベースの設定
