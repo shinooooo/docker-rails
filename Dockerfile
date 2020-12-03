@@ -1,23 +1,19 @@
-# Ruby version
 FROM ruby:2.5.7
 
-# reqiure packege install
 RUN apt-get update -qq && \
     apt-get install -y build-essential \
                        libpq-dev \
                        nodejs
 
-# work dierectory
-RUN mkdir /my_app
-
-# assign work directory as APP_ROOT
-ENV APP_ROOT /my_app
-WORKDIR $APP_ROOT
-
-# copy host gemfile
-ADD ./templates/Gemfile $APP_ROOT/Gemfile
-ADD ./templates/Gemfile.lock $APP_ROOT/Gemfile.lock
-
-# bundle install Gemfile
+WORKDIR /myapp
+COPY Gemfile /myapp/Gemfile
+COPY Gemfile.lock /myapp/Gemfile.lock
 RUN bundle install
-ADD ./src/ $APP_ROOT
+COPY ./src /myapp
+
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
+EXPOSE 3000
+
+CMD ["rails", "server", "-b", "0.0.0.0"]

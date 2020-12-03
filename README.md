@@ -1,6 +1,7 @@
-# 初回起動
+# Usage
+## 初回
 
-## mysqlのパスワードを設定
+### mysqlのパスワードを設定
 ```yaml
 # docker-compose.
 services:
@@ -10,18 +11,13 @@ services:
       MYSQL_ROOT_PASSWORD: **** #MySQLを起動する際パスワードを設定
 ```
 
-## プロジェクト作成
+### railsアプリの作成
 ```shell
-$ docker-compose run web rails new . --force --database=mysql
+  docker-compose run web rails new . --force --database=mysql --skip-test
 ```
 
-## データベースの設定
-
-```shell
-$ vi src/config/database.yml
-```
-
-以下のように変更
+### データベースの設定
+`src/config/database.yml`を以下のように変更
 
 ```yml
 default: &default
@@ -33,39 +29,31 @@ default: &default
   host: db
   ```
 
-## コンテナ起動
-
 ```shell
-$ docker-compose up 
-```
-
-## データベース作成
-新規ターミナルを開き、プロジェクトのディレクトリで下記コマンドを実行
-```shell
+$ docker-compose build
+$ docker-compose up -d
 $ docker-compose run web rails db:create
 ```
 
- ## 動作確認
-
+ ### 動作確認
 
 [ローカルサーバー](localhost:3000)にアクセスして　**Yay! You’re on Rails!**　と表示されていれば成功。
 
-# その他のコマンド
+## その他のコマンド
 
-## 停止
+### 停止
 Ctrl + Cではなく下記コマンドで停止
 ```shell
 $ docker-compose stop
 ```
 
-# 2回目以降の起動
-下記コマンドのみで起動可能。
+## 2回目以降
+## 起動。
 ```
 $ docker-compose up -d
 ```
 
-# イメージの削除
-プロジェクトのディレクトリが不要になった場合。
+## コンテナが不要になった場合。
 ```shell
 $ docker-compose down
 ```

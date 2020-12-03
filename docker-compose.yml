@@ -11,10 +11,10 @@ services:
 
   web:
     build: .
-    command: rails s -p 3000 -b '0.0.0.0'
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
-        - ./src:/my_app
+        - ./src:/myapp
     ports:
         - "3000:3000"
-    links:
+    depends_on:
         - db
