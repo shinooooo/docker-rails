@@ -48,12 +48,12 @@ $ docker-compose stop
 ```
 
 ## 2回目以降
-## 起動。
+## 起動
 ```
 $ docker-compose up -d
 ```
 
-## コンテナが不要になった場合。
+## コンテナが不要になった場合
 ```shell
 $ docker-compose down
 ```
